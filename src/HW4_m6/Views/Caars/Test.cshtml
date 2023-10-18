@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Welcome in Catalog CARS";
+}
+<h1 style=" color:saddlebrown">@ViewData["Title"]</h1>
+<div>
+    <div class="text">
+    <h>@foreach(CarViewModel ar in Model)
+        {
+            <div>
+                <p> Car: @ar.Name</p>
+                <p> Model: @ar.Model</p>
+               <span> @using (Html.BeginForm("DeleteTest", "Caars", FormMethod.Post))
+               {
+                   <input type="hidden" name="id" value="@ar.Id" />
+                 <button  style="color:brown" type="submit">Delete</button>
+               }
+               
+               @using (Html.BeginForm("Info", "Caars", FormMethod.Get))
+               {
+                   <input type="hidden" name="id" value="@ar.Id"/>
+                 <span>  <button  type="submit">Info</button></span>
+               }</span> 
+              
+               
+            </div>
+        }
+    </h>
+    <div>
+ 
+    </div>
+     <div>
+            <h4 style="color:saddlebrown">ADD CAR</h4>
+            @using (Html.BeginForm("GreateTest", "Caars", FormMethod.Post))
+               {
+                 <p>  <label>ID   </label><br />
+            <input type="number" name="id"/></p>
+            <p><label>Car  </label><br />
+            <input type="text" name="Name"/> </p>
+            
+            <p><label>Model</label><br />
+           <input type="text" name="Model"/> </p>
+           
+           <p>  <label>Price </label><br />
+            <input type="number" name="price"/> </p>
+           
+          <p> <button type="submit">ADD</button></p>
+              }
+    </div>
+</div>
+</div>
